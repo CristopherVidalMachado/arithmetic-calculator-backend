@@ -33,9 +33,9 @@ async function bootstrap() {
   const swaggerPath = configService.getOrThrow('SWAGGER_PATH');
 
   const config = new DocumentBuilder()
-    .setTitle('Jobsity Test - Api Service')
-    .setDescription("This document describes the services requested for the Jobsity test.\
-      This API is responsible for establishing user authentication and its integration into stock query API.\
+    .setTitle('TrueNorth Test - Api Service')
+    .setDescription("This document describes the services requested for the TrueNorth Test .\
+      This API is responsible for establishing user authentication and arithmetical operations .\
       The authentication is done using JWT; to begin using it, please refer to the 'auth' section.")
     .setVersion('1.0')
     .addServer(swaggerPath)

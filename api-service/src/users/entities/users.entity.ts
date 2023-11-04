@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { createCipheriv, randomBytes, randomInt, scrypt, scryptSync } from 'crypto';
-import { promisify } from 'util';
+
 import * as generator from 'generate-password'
 import { Exclude } from '@nestjs/class-transformer';
 import { compareSync, genSaltSync, hashSync } from 'bcrypt';
