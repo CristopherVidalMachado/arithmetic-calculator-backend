@@ -5,6 +5,7 @@ import { createCipheriv, randomBytes, randomInt, scrypt, scryptSync } from 'cryp
 import * as generator from 'generate-password'
 import { Exclude } from '@nestjs/class-transformer';
 import { compareSync, genSaltSync, hashSync } from 'bcrypt';
+import { RoleEnum } from '../users.enum';
 
 
 
@@ -30,9 +31,16 @@ export class User {
     password?: string;
 
     @ApiProperty({
+        example: true,
+    })
+    @Column('bit', { name: 'IsActive', default: () => '(1)' })
+    
+    active?: boolean
+
+    @ApiProperty({
         example: 'test@email.com',
     })
-    @Column('nvarchar', { name: 'Role'  })
+    @Column('nvarchar', { name: 'Role' })
     role?: string;
 
     @Exclude({ toPlainOnly: true })
@@ -44,24 +52,11 @@ export class User {
     @Exclude()
     plainPassword?: string;
 
-    public static generatePassword(user: User) {
-        user.plainPassword = generator.generate({
-            length: randomInt(8, 16),
-            uppercase: true,
-            lowercase: true,
-            symbols: true,
-            exclude: '"',
-            excludeSimilarCharacters: true,
-            numbers: true
-        })
-        user.password = this.encryptPassword(user).password;
-        return user;
-    }
 
     public static encryptPassword(user: User) {
         const saltRounds = 10;
         const salt = genSaltSync(saltRounds);
-        const hash = hashSync(user.plainPassword, salt);
+        const hash = hashSync(user.password, salt);
         user.password = hash;
         return user;
     }

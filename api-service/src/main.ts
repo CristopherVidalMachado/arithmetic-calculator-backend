@@ -5,10 +5,6 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import CorsAllowedOrigins from './config/configuration';
-<<<<<<< HEAD
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-=======
->>>>>>> feat/api-service
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
