@@ -31,6 +31,7 @@ export class UsersController {
     if (req.user.role === RoleEnum.user && req.user.sub !== id) {
       throw new UnauthorizedException();
     }
+
     return this.userService.findOneById(id).then((user: User) => User.transformObject(user));
   }
 
@@ -46,14 +47,17 @@ export class UsersController {
   @ApiBearerAuth('JWT-auth')
   @Put(':id')
   async update(@Param('id') id: string, @Body() user: UpdateUserDto, @Request() req): Promise<User> {
+    
     if (req.user.role === RoleEnum.user && req.user.sub !== id) {
       throw new UnauthorizedException();
     }
-    
+
     const userData = await this.userService.findOneById(id);
     if (!userData) {
       throw new UnauthorizedException();
     }
+
+   
 
     let updateUser = <User>assign(userData, user);
 
