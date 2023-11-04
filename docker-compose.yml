@@ -1,0 +1,21 @@
+version: '3.4'
+
+name: 'arithmetic-calculator-challenge'
+
+services:
+  database:
+    image: database:${TAG:-latest}
+    container_name: database
+    build:
+      context: infrastructure/database
+      dockerfile: ./Dockerfile
+    profiles:
+      - infrastructure
+      - database
+
+      
+networks:
+  default:
+    name: 'arithmetic-calculator-challenge-network'
+    driver: bridge
+

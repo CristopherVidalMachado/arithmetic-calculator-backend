@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+
+  database:
+    environment:
+      SA_PASSWORD: 'P@ssw0rd'
+      ACCEPT_EULA: 'Y'
+    build:
+      target: mssql
+      args:
+        FILE_NAME: challenge.database
+        SA_PASSWORD: 'P@ssw0rd'
+        SQL_PACKAGE_STRATEGY: bacpac
+        SQL_PACKAGE_ACTION: Import
+        SERVER: .
+        DATABASE: challenge
+        USER: sa
+        PASSWORD: P@ssw0rd
+    ports:
+      - '1433:1433'
+
+    

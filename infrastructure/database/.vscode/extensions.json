@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "microsoft.schema-compare",
+        "microsoft.profiler",
+        "microsoft.import",
+        "microsoft.dacpac",
+        "microsoft.sql-database-projects"
+    ]
+}
