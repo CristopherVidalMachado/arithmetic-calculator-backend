@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+
+  api-service:
+    environment:
+      # App
+      NODE_ENV: development
+    build:
+      target: debug
+    ports:
+      - 9229:9229
+    volumes:
+      - /app/node_modules
+      - ./api-service:/usr/app
+    working_dir: /usr/app
