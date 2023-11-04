@@ -41,6 +41,7 @@ import { HealthModule } from './health/health.module';
     }),
     HealthModule,
     AuthModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [JwtService],
