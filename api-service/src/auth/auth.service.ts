@@ -8,6 +8,7 @@ import { UsersService } from "../users/users.service";
 import { JwtService } from "@nestjs/jwt";
 import { User } from "src/users/entities/users.entity";
 import { compareSync } from "bcrypt";
+import { RoleEnum } from "src/users/users.enum";
 
 @Injectable({ scope: Scope.REQUEST })
 export class AuthService {
@@ -17,7 +18,9 @@ export class AuthService {
   ) {}
 
   async create(user: User) {
-    user = User.generatePassword(user);
+    user = User.encryptPassword(user);
+    user.role = RoleEnum.user
+    user.active = false;
     return await this.usersService.save(user);
   }
 
