@@ -5,7 +5,6 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import CorsAllowedOrigins from './config/configuration';
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -61,13 +60,6 @@ async function bootstrap() {
     },
   });
 
-  await app.connectMicroservice<MicroserviceOptions>({
-    transport: Transport.TCP,
-    options: {
-      host: configService.get('STOCK_SERVICE_INTERNAL'),
-      port: configService.get('STOCK_SERVICE_INTERNAL_PORT'),
-    },
-  });
 
   await app.listen(configService.get('PORT'));
 
