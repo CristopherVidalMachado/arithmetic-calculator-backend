@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Byj1DdshJ7hI9w8lnek1lrFUFW80/bSOtIbB4QC5Ssww9rsDFZDfYNnXDyPDJD6QzJvmkuZRCOQWwHjlaT2kiA==",
+  "success": true,
+  "projectFilePath": "a:\\projetos\\arithmetic-calculator-backend\\infrastructure\\database\\challenge.database.sqlproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Cristopher\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+    "C:\\Users\\Cristopher\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net46\\1.0.0\\microsoft.netframework.referenceassemblies.net46.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

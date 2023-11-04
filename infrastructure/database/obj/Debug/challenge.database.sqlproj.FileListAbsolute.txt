@@ -1,0 +1,11 @@
+a:\projetos\arithmetic-calculator-backend\infrastructure\database\bin\Debug\challenge.database.dacpac
+a:\projetos\arithmetic-calculator-backend\infrastructure\database\bin\Debug\Docker.publish.xml
+a:\projetos\arithmetic-calculator-backend\infrastructure\database\bin\Debug\challenge.database.dll
+a:\projetos\arithmetic-calculator-backend\infrastructure\database\bin\Debug\challenge.database.pdb
+a:\projetos\arithmetic-calculator-backend\infrastructure\database\obj\Debug\challenge.database.sqlproj.AssemblyReference.cache
+a:\projetos\arithmetic-calculator-backend\infrastructure\database\obj\Debug\Model.xml
+a:\projetos\arithmetic-calculator-backend\infrastructure\database\obj\Debug\refactor.xml
+a:\projetos\arithmetic-calculator-backend\infrastructure\database\obj\Debug\postdeploy.sql
+a:\projetos\arithmetic-calculator-backend\infrastructure\database\obj\Debug\predeploy.sql
+a:\projetos\arithmetic-calculator-backend\infrastructure\database\obj\Debug\challenge.database.dll
+a:\projetos\arithmetic-calculator-backend\infrastructure\database\obj\Debug\challenge.database.pdb
