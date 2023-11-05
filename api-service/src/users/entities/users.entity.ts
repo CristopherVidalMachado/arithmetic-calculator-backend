@@ -28,6 +28,7 @@ export class User {
         example: 'mypass123!',
     })
     @Column('nvarchar', { name: 'Password' })
+    @Exclude()
     password?: string;
 
     @ApiProperty({
@@ -38,7 +39,7 @@ export class User {
     active?: boolean
 
     @ApiProperty({
-        example: 'test@email.com',
+        example: 'user',
     })
     @Column('nvarchar', { name: 'Role' })
     role?: string;
@@ -47,17 +48,16 @@ export class User {
     @Column('datetime2', { name: 'CreatedOn', default: () => 'getdate()', select: false })
     createdOn?: Date;
 
- 
-
-    @Exclude()
-    plainPassword?: string;
-
-
     public static encryptPassword(user: User) {
         const saltRounds = 10;
         const salt = genSaltSync(saltRounds);
         const hash = hashSync(user.password, salt);
         user.password = hash;
+        return user;
+    }
+
+    public static transformObject(user: User) {
+        delete user.password;
         return user;
     }
 

@@ -24,10 +24,6 @@ export class AuthService {
     return await this.usersService.save(user);
   }
 
-  async recoverPassword(user: User) {
-    const recoverUser = await this.create(user);
-  }
-
   async login(User: User) {
     const payload = {
       sub: User.id,

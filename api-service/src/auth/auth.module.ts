@@ -11,7 +11,7 @@ import { ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-   
+
     JwtModule.registerAsync({
       useFactory: (config: ConfigService) => {
         return {
@@ -30,4 +30,4 @@ import { ConfigService } from '@nestjs/config';
   controllers: [AuthController],
   exports: [AuthService],
 })
-export class AuthModule {}
+export class AuthModule { }

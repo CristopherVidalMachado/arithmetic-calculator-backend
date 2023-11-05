@@ -10,6 +10,9 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/entities/users.entity';
 
 import { HealthModule } from './health/health.module';
+import { OperationModule } from './operation/operation.module';
+import { RecordModule } from './record/record.module';
+import { Operation } from './operation/entities/operation.entity';
 
 @Module({
   imports: [
@@ -25,7 +28,7 @@ import { HealthModule } from './health/health.module';
         username: configService.get('MSSQL_USER_NAME'),
         password: configService.get('MSSQL_PASSWORD'),
         database: configService.get('MSSQL_DATABASE'),
-        entities: [User],
+        entities: [User, Operation],
         options: {
           encrypt: process.env.NODE_ENV !== 'local',
         },
@@ -41,6 +44,9 @@ import { HealthModule } from './health/health.module';
     }),
     HealthModule,
     AuthModule,
+    UsersModule,
+    OperationModule,
+    RecordModule,
   ],
   controllers: [],
   providers: [JwtService],
