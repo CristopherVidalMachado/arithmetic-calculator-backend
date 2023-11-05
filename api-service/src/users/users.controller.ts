@@ -32,7 +32,11 @@ export class UsersController {
       throw new UnauthorizedException();
     }
 
-    return this.userService.findOneById(id).then((user: User) => User.transformObject(user));
+    const user =  await this.userService.findOneById(id).then((user: User) => User.transformObject(user));
+    if (!user.active) {
+      throw new UnauthorizedException();
+    }
+    return user;
   }
 
   @ApiBadRequestResponse({ description: 'Bad Request', type: () => DefaultErrorModel })
@@ -56,8 +60,9 @@ export class UsersController {
     if (!userData) {
       throw new UnauthorizedException();
     }
-
-   
+    // if (!userData.active) {
+    //   throw new UnauthorizedException();
+    // }
 
     let updateUser = <User>assign(userData, user);
 

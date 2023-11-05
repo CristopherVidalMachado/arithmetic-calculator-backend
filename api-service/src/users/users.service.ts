@@ -16,10 +16,8 @@ export class UsersService {
 
   async findOneById(id: string): Promise<User>  {
     const user = await this.userRepository.findOneBy({ id: id});
-    if(!user.active){
-      throw new Error('User is not active');
-    }
-    return
+ 
+    return user
   }
   async findOneByEmail(email: string): Promise<User> {
     return this.userRepository.findOneBy({ email: email});
