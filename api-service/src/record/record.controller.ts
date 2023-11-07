@@ -1,14 +1,21 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { RecordService } from './record.service';
 import { CreateRecordDto } from './dto/create-record.dto';
-import { UpdateRecordDto } from './dto/update-record.dto';
 
+import { ApiTags } from '@nestjs/swagger';
+import { BalanceService } from 'src/balance/balance.service';
+@ApiTags('Record')
 @Controller('record')
 export class RecordController {
-  constructor(private readonly recordService: RecordService) {}
+  constructor(
+    private readonly recordService: RecordService, 
+    private readonly balanceService: BalanceService
+  ) { }
 
   @Post()
-  create(@Body() createRecordDto: CreateRecordDto) {
+  async create(@Body() createRecordDto: CreateRecordDto) {
+    
+    const balance = await this.balanceService.findLastByUserId(createRecordDto.userId)
     return this.recordService.create(createRecordDto);
   }
 
@@ -19,12 +26,7 @@ export class RecordController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.recordService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRecordDto: UpdateRecordDto) {
-    return this.recordService.update(+id, updateRecordDto);
+    return this.recordService.findOne(id);
   }
 
   @Delete(':id')

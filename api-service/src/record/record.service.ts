@@ -1,26 +1,39 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRecordDto } from './dto/create-record.dto';
 import { UpdateRecordDto } from './dto/update-record.dto';
+import { Record } from './entities/record.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class RecordService {
-  create(createRecordDto: CreateRecordDto) {
-    return 'This action adds a new record';
+  constructor(
+    @InjectRepository(Record)
+    private readonly recordRepository: Repository<Record>
+  ) { }
+  async create(createRecordDto: CreateRecordDto,) {
+
+  
+    return await this.recordRepository.save(createRecordDto);
   }
 
-  findAll() {
-    return `This action returns all record`;
+  async findAll() {
+    return await this.recordRepository.find({
+      loadEagerRelations: true,
+      relations: ['operation']
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} record`;
-  }
-
-  update(id: number, updateRecordDto: UpdateRecordDto) {
-    return `This action updates a #${id} record`;
+  async findOne(id: string) {
+  
+    return await this.recordRepository.findOne({
+      loadEagerRelations: true,
+      relations: ['operation'],
+      where: { id: id }
+    })
   }
 
   remove(id: number) {
-    return `This action removes a #${id} record`;
+    return this.recordRepository.softDelete(id);
   }
 }

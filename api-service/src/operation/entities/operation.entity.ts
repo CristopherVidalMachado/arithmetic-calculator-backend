@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Exclude } from '@nestjs/class-transformer';
+import { Record } from 'src/record/entities/record.entity';
 
 @Index('PK_Operation', ['id'], { unique: true })
 @Entity('Operations', { schema: 'Challenge' })
@@ -28,6 +29,7 @@ export class Operation {
     @Column('datetime2', { name: 'CreatedOn', default: () => 'getdate()', select: false })
     createdOn?: Date;
 
-
+    @OneToMany(() => Record, (record) => record.operation)
+    records: Record[];
   
 }
