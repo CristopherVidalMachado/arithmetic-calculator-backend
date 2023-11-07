@@ -11,7 +11,9 @@ export class RecordService {
     @InjectRepository(Record)
     private readonly recordRepository: Repository<Record>
   ) { }
-  async create(createRecordDto: CreateRecordDto) {
+  async create(createRecordDto: CreateRecordDto,) {
+
+  
     return await this.recordRepository.save(createRecordDto);
   }
 
@@ -30,11 +32,8 @@ export class RecordService {
       where: { id: id }
     })
   }
-  update(id: number, updateRecordDto: UpdateRecordDto) {
-    return `This action updates a #${id} record`;
-  }
 
   remove(id: number) {
-    return `This action removes a #${id} record`;
+    return this.recordRepository.softDelete(id);
   }
 }

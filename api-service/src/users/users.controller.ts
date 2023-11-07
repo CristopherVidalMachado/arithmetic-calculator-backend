@@ -10,6 +10,7 @@ import { AuthGuard } from 'src/auth/auth.guard';
 import { RoleGuard } from 'src/auth/role/role.guard';
 import { Roles } from 'src/auth/roles/roles.decorator';
 import { RoleEnum } from './users.enum';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @ApiTags('User')
 @Controller({
@@ -72,4 +73,6 @@ export class UsersController {
     return this.userService.save(updateUser).then((user: User) => User.transformObject(user));
 
   }
+
+
 }

@@ -14,6 +14,8 @@ import { OperationModule } from './operation/operation.module';
 import { RecordModule } from './record/record.module';
 import { Operation } from './operation/entities/operation.entity';
 import { Record } from './record/entities/record.entity';
+import { BalanceModule } from './balance/balance.module';
+import { Balance } from './balance/entities/balance.entity';
 
 @Module({
   imports: [
@@ -29,7 +31,7 @@ import { Record } from './record/entities/record.entity';
         username: configService.get('MSSQL_USER_NAME'),
         password: configService.get('MSSQL_PASSWORD'),
         database: configService.get('MSSQL_DATABASE'),
-        entities: [User, Operation, Record],
+        entities: [User, Operation, Record, Balance],
         options: {
           encrypt: process.env.NODE_ENV !== 'local',
         },
@@ -48,6 +50,7 @@ import { Record } from './record/entities/record.entity';
     UsersModule,
     OperationModule,
     RecordModule,
+    BalanceModule,
   ],
   controllers: [],
   providers: [JwtService],
