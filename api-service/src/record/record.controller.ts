@@ -2,7 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { RecordService } from './record.service';
 import { CreateRecordDto } from './dto/create-record.dto';
 import { UpdateRecordDto } from './dto/update-record.dto';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('Record')
 @Controller('record')
 export class RecordController {
   constructor(private readonly recordService: RecordService) {}
@@ -19,7 +20,7 @@ export class RecordController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.recordService.findOne(+id);
+    return this.recordService.findOne(id);
   }
 
   @Patch(':id')

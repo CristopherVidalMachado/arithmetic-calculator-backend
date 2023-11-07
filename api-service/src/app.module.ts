@@ -13,6 +13,7 @@ import { HealthModule } from './health/health.module';
 import { OperationModule } from './operation/operation.module';
 import { RecordModule } from './record/record.module';
 import { Operation } from './operation/entities/operation.entity';
+import { Record } from './record/entities/record.entity';
 
 @Module({
   imports: [
@@ -28,7 +29,7 @@ import { Operation } from './operation/entities/operation.entity';
         username: configService.get('MSSQL_USER_NAME'),
         password: configService.get('MSSQL_PASSWORD'),
         database: configService.get('MSSQL_DATABASE'),
-        entities: [User, Operation],
+        entities: [User, Operation, Record],
         options: {
           encrypt: process.env.NODE_ENV !== 'local',
         },
